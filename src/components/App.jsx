@@ -1,6 +1,6 @@
 import { Component } from 'react';
 import { Searchbar } from './Searchbar/Searchbar';
-import { ImageGallery } from './ImageGallery/ImageGallery';
+//import { ImageGallery } from './ImageGallery/ImageGallery';
 import { AppWrapper } from './App.styled';
 
 export class App extends Component {
@@ -18,7 +18,6 @@ export class App extends Component {
     return (
       <AppWrapper>
         <Searchbar onSubmit={this.handleSubmit} />
-        <ImageGallery searchWord={this.state.searchQuery} />
       </AppWrapper>
     );
   }
