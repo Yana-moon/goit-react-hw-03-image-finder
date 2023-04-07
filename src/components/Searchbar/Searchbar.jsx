@@ -4,16 +4,19 @@ import {SearchbarWrapper, SearchbarForm, Searchbarbutton, SearchbarInput, Search
 
 export class Searchbar extends Component {
     state = {
-        name: '',
+        inputValue: '',
     };
 
 
-handleChange = evt => {
-        this.setState({ name: evt.target.value.trim() });
+handleChange = event => {
+    event.preventDefault();
+        this.setState(() => {
+            return {inputValue: event.target.value };
+        });
     };
     
-onFormSubmit = e => {
-        e.preventDefault();
+onFormSubmit = event => {
+        event.preventDefault();
         this.props.onSubmit(this.state);
     };
 
@@ -22,7 +25,7 @@ render () {
     return (
 <SearchbarWrapper>
     <SearchbarForm onSubmit={this.onFormSubmit}>
-    <Searchbarbutton type="submit">
+    <Searchbarbutton type="submit" disabled={this.state.inputValue.trim() === ''}>
         <SearchbarLabel>Search</SearchbarLabel>
     </Searchbarbutton>
 
@@ -33,7 +36,7 @@ render () {
         //autofocus
         placeholder="Search images and photos"
         onChange={this.handleChange}
-        value={this.state.name}
+        value={this.state.inputValue}
     />
     </SearchbarForm>
 </SearchbarWrapper>
