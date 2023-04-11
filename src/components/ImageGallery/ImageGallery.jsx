@@ -9,8 +9,9 @@ import { Loader } from 'components/Loader/Loader';
 import { Modal } from 'components/Modal/Modal';
 import { GalleryWrapper  } from './ImageGallery.styled';
 
-const API_URL = 'https://pixabay.com/api/';
 const API_KEY = '33912044-22b2651672bec86fc9e274e80';
+const API_URL = 'https://pixabay.com/api/';
+
 
 export class ImageGallery extends Component {
   state = {
