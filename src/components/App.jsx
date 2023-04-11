@@ -6,13 +6,11 @@ import { AppWrapper } from './App.styled';
 
 export class App extends Component {
   state = {
-    searchQuery: '',
+    searchName: '',
   };
 
-  handleSubmit = ({ name }) => {
-    this.setState({
-      searchQuery: name,
-    });
+  handleSubmit = searchName => {
+    this.setState({searchName});
   };
 
   render() {
@@ -20,7 +18,7 @@ export class App extends Component {
       <AppWrapper>
         <ToastContainer autoClose={2500} />
         <Searchbar onSubmit={this.handleSubmit} />
-        <ImageGallery pictureFindName={this.state.pictureName} />
+        <ImageGallery picFindName={this.state.searchName} />
       </AppWrapper>
     );
   }

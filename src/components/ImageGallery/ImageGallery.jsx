@@ -107,7 +107,7 @@ export class ImageGallery extends Component {
                 );
               })}
             </GalleryWrapper >
-            {status === 'resolved' && <Button onClick={this.onLoadMore} />}
+            {status === 'resolved' && <Button onClickButton={this.onLoadMore} />}
             {status === 'pending' && <Loader />}
           </>
         )}
