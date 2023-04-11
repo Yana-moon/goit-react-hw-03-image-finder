@@ -33,7 +33,7 @@ export class ImageGallery extends Component {
           if (data.totalHits <= 0) {
             this.setState({ status: 'resolved' });
             return toast.error(
-              `Sorry, we didn't find picture including ${picFindName}`
+              `Sorry, we didn't find picture  including ${picFindName}`
             );
           }
           this.setState({ pictures: data.hits, status: 'resolved' });
@@ -52,7 +52,7 @@ export class ImageGallery extends Component {
           if (data.totalHits < 12) {
             this.setState({ status: 'resolved' });
             return toast.warn(
-              `Sorry, picture including ${picFindName} ended :(`
+              `Sorry, picture ended :(`
             );
           }
           this.setState(prevState => ({
