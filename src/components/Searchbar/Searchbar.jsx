@@ -1,5 +1,8 @@
-import PropTypes from 'prop-types';
 import { Component } from 'react';
+import PropTypes from 'prop-types';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { BiSearchAlt2 } from 'react-icons/bi';
 import {SearchbarWrapper, SearchbarForm, Searchbarbutton, SearchbarInput, SearchbarLabel } from './Searchbar.styled';
 
 export class Searchbar extends Component {
@@ -8,30 +11,35 @@ export class Searchbar extends Component {
     };
 
 
-handleChange = event => {
-    event.preventDefault();
-        this.setState(() => {
-            return {inputValue: event.target.value };
-        });
-    };
-    
-onFormSubmit = event => {
-        event.preventDefault();
-        this.props.onSubmit(this.state);
-    };
+// відслідковування input-a
+handleChange = ({ target: { value } }) => {
+    this.setState({ inputValue: value });
+  };
 
+  // передача значення зі стейту в App під час сабміту форми
+  onFormSubmit = e => {
+    e.preventDefault();
+    if (this.state.inputValue.trim() === '') {
+      toast.warn('Enter something');
+      return;
+    }
+    this.props.onSubmit(this.state.inputValue);
+    this.setState({ inputValue: '' });
+  };
 
 render () {
     return (
 <SearchbarWrapper>
     <SearchbarForm onSubmit={this.onFormSubmit}>
-    <Searchbarbutton type="submit" disabled={this.state.inputValue.trim() === ''}>
+    <Searchbarbutton type="submit">
+    <BiSearchAlt2 size="25px" />
         <SearchbarLabel>Search</SearchbarLabel>
     </Searchbarbutton>
 
     <SearchbarInput
         //class="input"
         type="text"
+        name="inputValue"
         //autocomplete="off"
         //autofocus
         placeholder="Search images and photos"
