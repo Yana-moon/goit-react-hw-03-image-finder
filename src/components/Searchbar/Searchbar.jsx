@@ -39,7 +39,7 @@ render () {
     <SearchbarInput
         //class="input"
         type="text"
-        name="searchName"
+        //name="searchName"
         //autocomplete="off"
         //autofocus
         placeholder="Search images and photos"
