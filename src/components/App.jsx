@@ -55,7 +55,7 @@ export class App extends Component {
         this.setState({
           isLoading: false,
         });
-        toast.error(
+        return toast.error(
           'Sorry, something wrong. Try again later');
       }
     }
