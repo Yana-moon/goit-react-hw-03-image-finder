@@ -20,6 +20,7 @@ export class ImageGallery extends Component {
     status: 'idle',
     showModal: false,
     largeImgURL: '',
+    per_page: 12,
   };
 
   componentDidUpdate(prevProps, prevState) {
@@ -37,12 +38,28 @@ export class ImageGallery extends Component {
             return toast.error(
               `Sorry, we didn't find picture  including ${picFindName}`
             );
-          }
+          } //{
+          //try {
+          //const imageArr = data.hits.map(
+            //({ id, webformatURL, largeImageURL }) => ({
+              //id,
+             // webformatURL,
+             // largeImageURL,
+            //})
+          //);
+          
           this.setState({ pictures: data.hits, status: 'resolved' });
+          //this.setState(prevState => ({
+          //images: [...prevState.images, ...imageArr],
+         //status: 'resolved',
+         // }));
+        //};
+    //}
         })
         .catch(error => toast.error('Sorry, something wrong. Try again later'));
-    }
-
+    };
+  
+  
     // якщо змінився номер сторінки (Load more)
     if (prevState.currentPage !== currentPage && currentPage !== 1) {
       this.setState({ status: 'pending' });
@@ -85,6 +102,15 @@ export class ImageGallery extends Component {
   // зміна стану модального вікна
   toggleModal = () => {
     this.setState(state => ({ showModal: !state.showModal }));
+  };
+
+  onButtonVisible = () => {
+    if (
+      this.state.pictures &&
+      this.state.pictures.length < Number (this.state.currentPage * this.state.per_page)
+    ) {
+      return false;
+    } else return true;
   };
 
   render() {
