@@ -1,30 +1,30 @@
 import { Component } from 'react';
 import PropTypes from 'prop-types';
 import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+//import 'react-toastify/dist/ReactToastify.css';
 import { BiSearchAlt2 } from 'react-icons/bi';
 import {SearchbarWrapper, SearchbarForm, Searchbarbutton, SearchbarInput, SearchbarLabel } from './Searchbar.styled';
 
 export class Searchbar extends Component {
     state = {
-        inputValue: '',
+        name: '',
     };
 
 
 // відслідковування input-a
-handleChange = ({ target: { value } }) => {
-    this.setState({ inputValue: value });
+handleChange = evt => {
+    this.setState({ name: evt.target.value.trim() });
   };
 
   // передача значення зі стейту в App під час сабміту форми
   onFormSubmit = e => {
     e.preventDefault();
-    if (this.state.inputValue.trim() === '') {
+    if (this.state.name.trim() === '') {
       toast.warn('Enter something');
       return;
     }
-    this.props.onSubmit(this.state.inputValue);
-    this.setState({ inputValue: '' });
+    this.props.onSubmit(this.state.name);
+    this.setState({ name: '' });
   };
 
 render () {
@@ -39,12 +39,12 @@ render () {
     <SearchbarInput
         //class="input"
         type="text"
-        name="inputValue"
+        name="searchName"
         //autocomplete="off"
         //autofocus
         placeholder="Search images and photos"
         onChange={this.handleChange}
-        value={this.state.inputValue}
+        value={this.state.name}
     />
     </SearchbarForm>
 </SearchbarWrapper>

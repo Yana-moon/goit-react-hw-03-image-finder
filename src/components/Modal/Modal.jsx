@@ -1,5 +1,6 @@
-import { Component } from 'react';
 import PropTypes from 'prop-types';
+import { Component } from 'react';
+
 import { OverlayWrapper, ModalWrapper } from './Modal.styled';
 
 export class Modal extends Component {
@@ -17,17 +18,14 @@ export class Modal extends Component {
     }
   };
 
-  handleBackdropClick = e => {
-    if (e.currentTarget === e.target) {
-      this.props.onClose();
-    }
-  };
+
 
   render() {
+    const { largeImageURL, onClose } = this.props;
     return (
-      <OverlayWrapper className="overlay" onClick={this.handleBackdropClick}>
-        <ModalWrapper className="modal">
-          <img src={this.props.largeImageURL} alt="" />
+      <OverlayWrapper onClick={onClose}>
+        <ModalWrapper>
+          <img src={largeImageURL} alt="Modal" width="960px"  />
         </ModalWrapper>
       </OverlayWrapper>
     );

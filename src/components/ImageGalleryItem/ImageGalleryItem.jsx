@@ -1,16 +1,21 @@
 import PropTypes from 'prop-types';
 import { ImageGalleryItemWrapper, ImageGalleryImage } from './ImageGalleryItem.styled';
 
-export const ImageGalleryItem = ({ webformatURL, id }) => {
+export const ImageGalleryItem = ({ picture, handleClick }) => {
   return (
     <ImageGalleryItemWrapper>
-      <ImageGalleryImage src={webformatURL} id={id} alt=""
+      <ImageGalleryImage src={picture.webformatURL} alt={picture.tags}
+        onClick={() => handleClick(picture.largeImageURL)}
       />
     </ImageGalleryItemWrapper>
   );
 };
 
 ImageGalleryItem.propTypes = {
-  id: PropTypes.number.isRequired,
-  webformatURL: PropTypes.string.isRequired,
+  picture: PropTypes.shape({
+    webformatURL: PropTypes.string.isRequired,
+    tags: PropTypes.string.isRequired,
+    largeImageURL: PropTypes.string.isRequired,
+  }).isRequired,
+  handleClick: PropTypes.func.isRequired,
 };
