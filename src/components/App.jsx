@@ -19,7 +19,7 @@ export class App extends Component {
     isLoading: false,
   };
 
-  async componentDidUpdate(prevProps, prevState) {
+  async componentDidUpdate(_prevProps, prevState) {
     const options = {
       searchName: this.state.searchName,
       currentPage: this.state.currentPage,
