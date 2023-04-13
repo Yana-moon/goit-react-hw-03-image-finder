@@ -16,7 +16,7 @@ export class App extends Component {
     currentPage: 1,
     per_page: 12,
     isOpen: false,
-    bigImage: '',
+    largeImage: '',
     isLoading: false,
   };
 
@@ -99,7 +99,7 @@ export class App extends Component {
 
   handleBigImg = img => {
     this.setState({
-      bigImage: img,
+      largeImage: img,
       isOpen: true,
     });
   };
@@ -134,7 +134,7 @@ export class App extends Component {
         <ImageGallery pictures={this.state.pictures}
         onBigImg={this.handleBigImg} />
                 {this.state.isOpen && (
-          <Modal bigImage={this.state.bigImage} onClose={this.onClose} />
+          <Modal largeImage={this.state.largeImage} onClose={this.onClose} />
         )}
         {this.onButtonVisible() && (
           <Button onClickButton={this.loadMoreCards} />

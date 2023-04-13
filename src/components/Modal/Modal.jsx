@@ -21,11 +21,11 @@ export class Modal extends Component {
 
 
   render() {
-    const { largeImageURL, onClose } = this.props;
+    const { largeImage, onClose } = this.props;
     return (
       <OverlayWrapper onClick={onClose}>
         <ModalWrapper>
-          <img src={largeImageURL} alt="Modal" width="960px"  />
+          <img src={largeImage} alt="Modal" width="960px"  />
         </ModalWrapper>
       </OverlayWrapper>
     );
@@ -33,6 +33,6 @@ export class Modal extends Component {
 }
 
 Modal.propTypes = {
-  largeImageURL: PropTypes.string.isRequired,
+  largeImage: PropTypes.string.isRequired,
   onClose: PropTypes.func.isRequired,
 };
