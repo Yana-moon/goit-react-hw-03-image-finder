@@ -1,6 +1,6 @@
 import { Component } from 'react';
 import PropTypes from 'prop-types';
-import { toast } from 'react-toastify';
+//import { toast } from 'react-toastify';
 //import 'react-toastify/dist/ReactToastify.css';
 import { BiSearchAlt2 } from 'react-icons/bi';
 import {SearchbarWrapper, SearchbarForm, Searchbarbutton, SearchbarInput, SearchbarLabel } from './Searchbar.styled';
