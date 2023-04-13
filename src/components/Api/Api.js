@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-axios.defaults.apiURL = 'https://pixabay.com/api';
+axios.defaults.baseURL = 'https://pixabay.com/api';
 
 const searchParams = new URLSearchParams({
   key: '33912044-22b2651672bec86fc9e274e80',
