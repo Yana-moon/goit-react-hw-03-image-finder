@@ -22,7 +22,7 @@ export class App extends Component {
   async componentDidUpdate(prevProps, prevState) {
     const options = {
       searchName: this.state.searchName,
-      page: this.state.currentPage,
+      currentPage: this.state.currentPage,
     };
     if (
       prevState.searchName !== this.state.searchName &&
@@ -89,7 +89,7 @@ export class App extends Component {
     if (name !== this.state.searchName && name) {
       this.setState({
         searchName: name,
-        page: 1,
+        currentPage: 1,
         pictures: [],
         isLoading: true,
       });
