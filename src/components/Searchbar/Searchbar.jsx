@@ -19,12 +19,7 @@ handleChange = evt => {
   // передача значення зі стейту в App під час сабміту форми
   onFormSubmit = e => {
     e.preventDefault();
-    if (this.state.name.trim() === '') {
-      toast.warn('Enter something');
-      return;
-    }
-    this.props.onSubmit(this.state.name);
-    this.setState({ name: '' });
+    this.props.onSubmit(this.state);
   };
 
 render () {
