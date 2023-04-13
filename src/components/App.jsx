@@ -1,5 +1,6 @@
 import { Component } from 'react';
 import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { Searchbar } from './Searchbar/Searchbar';
 import { ImageGallery } from './ImageGallery/ImageGallery';
 import { AppWrapper } from './App.styled';
@@ -55,8 +56,8 @@ export class App extends Component {
         this.setState({
           isLoading: false,
         });
-        return toast.error(
-          'Sorry, something wrong. Try again later');
+        toast.error(
+          'Sorry, something wrong. Try again later', error);
       }
     }
 
@@ -79,7 +80,7 @@ export class App extends Component {
           isLoading: false,
         });
         return toast.warn(
-          'Sorry, something went wrong, please try again later',
+          'Sorry, something went wrong, please try again later', error
         );
       }
     }
